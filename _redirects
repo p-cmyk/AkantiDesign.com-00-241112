@@ -1,5 +1,0 @@
-# Redirigir desde el subdominio de Netlify a tu dominio principal
-https://friendly-khapse-fb2345.netlify.app/* https://akantidesign.com/:splat 301!
-
-# Forzar que www.akantidesign.com redirija a akantidesign.com
-https://www.akantidesign.com/* https://akantidesign.com/:splat 301!
