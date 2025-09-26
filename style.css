@@ -1,0 +1,219 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del cuerpo */
+body {
+    background-color: #F4F4F4; /* Fondo según la presentación */
+    font-family: 'Nunito', sans-serif;
+    height: 100vh;
+    position: relative;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column; /* Alinea el logo y el texto en columna */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Logo */
+.logo {
+    max-width: 30%; /* Ajuste de tamaño; cámbialo para hacer el logo más grande o pequeño */
+    height: auto;
+}
+
+/* Texto adicional debajo del logo */
+.tagline {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Poppins Light */
+    font-style: italic;
+    color: #E2E0E0; /* Color gris claro en RGB */
+    font-size: 40px; /* Tamaño grande */
+    text-align: center;
+    margin-top: 20px; /* Espacio entre el logo y el texto */
+    display: block;
+    width: 100%;
+}
+
+.header-text {
+    position: absolute; /* Cambia de fixed a absolute */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajuste completo al centro */
+    color: #B4C7E7; /* Color de texto */
+    font-size: 20px; /* Tamaño de fuente */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Poppins Light */
+    font-style: italic; /* Texto en cursiva */
+    opacity: 0.5; /* Opacidad al 50% */
+    text-decoration: none; /* Sin subrayado */
+    z-index: 10; /* Asegura que esté encima de otros elementos */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+/* Enlaces inferiores */
+.bottom-links {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Estilos de los enlaces inferiores */
+.bottom-links a,
+.bottom-links .center-text {
+    color: #B4C7E7; /* Color de texto según la presentación */
+    text-decoration: none;
+    font-size: 20px; /* Ajuste de tamaño para acercarse más a la presentación */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Poppins Light */
+    padding: 20px 20px; /* Espaciado de 20px en todos los lados */
+}
+
+/* Efecto hover en enlaces inferiores */
+.bottom-links a {
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave para color y tamaño */
+}
+
+.bottom-links a:hover {
+    color: #8DA7D9; /* Un tono de azul más oscuro para el hover */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+    text-decoration: none; /* Sin subrayado en hover */
+}
+
+.bottom-links .center-text {
+    text-align: center;
+    flex: 1;
+}
+
+/* Estilos del enlace Contact */
+.right-link {
+    position: relative;
+    color: #B4C7E7;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    padding: 20px;
+    transition: color 0.3s ease;
+}
+
+/* Texto del correo que aparecerá al hacer hover */
+.right-link::after {
+    content: "hello@akantidesign.com"; /* Texto del correo */
+    position: absolute;
+    right: 100%; /* Coloca el correo a la izquierda del enlace Contact */
+    margin-right: 10px; /* Separación entre Contact y el correo */
+    color: #B4C7E7; /* Mismo color */
+    font-size: 20px; /* Mismo tamaño */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300; /* Poppins Light */
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease; /* Transición suave */
+    white-space: nowrap; /* Evita que el correo se divida en varias líneas */
+    font-style: italic; /* Texto en cursiva */
+}
+
+/* Aparece el correo al hacer hover en Contact */
+.right-link:hover::after {
+    opacity: 1; /* opacidad */
+}
+
+/* Responsividad */
+@media (max-width: 1194px) and (min-width: 769px) {
+    .center-text {
+        display: none; /* Oculta el texto © 2024 en tablet */
+    }
+
+    .tagline {
+        padding: 20px 0; /* Ajusta el padding superior e inferior */
+        font-size: 30px; /* Ajusta el tamaño de fuente si es necesario */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajustes del cuerpo */
+    body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Evita el scroll */
+        height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+        position: relative; /* Para controlar el posicionamiento interno */
+    }
+
+    /* Contenedor principal */
+    .container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto; /* Permite que el logo ocupe el espacio disponible */
+        padding-bottom: 100px; /* Deja espacio para los enlaces inferiores */
+    }
+
+    /* Logo más grande en móviles */
+    .logo {
+        max-width: 80%; /* Ahora el logo ocupa más ancho de la pantalla */
+    }
+
+    /* Enlaces inferiores */
+    .bottom-links {
+        position: fixed; /* Posiciona el pie de página fijo en la parte inferior de la pantalla */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        background-color: #F4F4F4; /* Fondo para garantizar visibilidad */
+    }
+
+    /* Orden de los elementos */
+    .bottom-links a.left-link {
+        order: 1;
+    }
+
+    .bottom-links a.right-link {
+        order: 2;
+    }
+
+    .bottom-links .center-text {
+        order: 3;
+        margin-top: 10px; /* Espacio superior */
+        display: block; /* Vuelve a mostrar el texto © 2024 en móviles */
+    }
+
+    /* Estilos de los enlaces y texto */
+    .bottom-links a,
+    .bottom-links .center-text {
+        font-size: 20px; /* Ajuste de tamaño en móviles */
+        padding: 10px 0; /* Ajuste de padding */
+        text-align: center; /* Centra el texto */
+        width: 100%; /* Para que el texto ocupe todo el ancho */
+    }
+    /* Ajuste del subtítulo en móviles */
+    .tagline {
+        font-size: 23px; /* Tamaño de fuente reducido para móviles */
+        padding: 10px 40px; /* Espaciado ajustado */
+        text-align: center; /* Centra el texto */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        padding-bottom: 30px; /* Ajusta este valor según tus necesidades */
+    }
+    .bottom-links {
+        padding-top: 10px; /* Ajusta para asegurarte que el texto del pie esté visible */
+    }
+}

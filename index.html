@@ -1,0 +1,126 @@
+   <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Akanti Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X2EGLLNHCD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X2EGLLNHCD');
+</script>
+
+    <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado fijo superior -->
+    <div class="header-text">~ Coming Soon ~</div>
+    <!-- Contenido principal -->
+    <div class="container">
+        <img src="assets/akanti_barcelona.svg" alt="Logo Akanti" class="logo" id="mainLogo">
+        <!-- Texto adicional fijo -->
+        <p class="tagline">design objects made with love in Barcelona ;)</p>
+    </div>
+
+    <!-- Enlaces inferiores -->
+    <div class="bottom-links">
+        <a href="https://instagram.com/akanti.design" target="_blank" class="left-link">Instagram</a>
+        <div class="center-text">© 2024 akantidesign.com</div>
+        <a href="mailto:hello@akantidesign.com" class="right-link">Contact</a>
+    </div>
+
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/Draggable.min.js"></script>
+
+    <!-- Script de animación -->
+    <script>
+        let copiedLogo = null; // Variable para almacenar el último logo clicado
+
+        const mainLogo = document.getElementById("mainLogo");
+
+        // Configurar el evento de selección para el logo principal
+        mainLogo.addEventListener("click", () => {
+            copiedLogo = mainLogo; // Actualizar el logo seleccionado
+        });
+
+        // Configurar el evento de rotación en el logo principal
+        mainLogo.addEventListener("click", () => toggleRotation(mainLogo));
+
+        // Hacer que el logo principal sea arrastrable y seleccionarlo al moverlo
+        Draggable.create(mainLogo, {
+            type: "x,y",
+            bounds: "body",
+            onDragStart: function() {
+                copiedLogo = mainLogo; // Al mover, actualizar el logo seleccionado
+            }
+        });
+
+        // Función para duplicar el logo seleccionado
+        function duplicateLogo(originalLogo) {
+            const newLogo = originalLogo.cloneNode(true);
+            newLogo.style.position = "absolute";
+            newLogo.style.left = `${originalLogo.offsetLeft + 20}px`; // Desplazamiento a la derecha
+            newLogo.style.top = `${originalLogo.offsetTop + 20}px`;   // Desplazamiento hacia abajo
+            newLogo.style.transform = originalLogo.style.transform || "scale(1)";
+            document.body.appendChild(newLogo);
+
+            // Animación de aparición con zoom
+            gsap.fromTo(newLogo, { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+
+            // Hacer que el logo duplicado sea arrastrable y seleccionarlo al moverlo
+            Draggable.create(newLogo, {
+                type: "x,y",
+                bounds: "body",
+                onDragStart: function() {
+                    copiedLogo = newLogo; // Actualizar el logo seleccionado al moverlo
+                }
+            });
+
+            // Añadir eventos de selección y rotación al nuevo logo
+            newLogo.addEventListener("click", () => {
+                copiedLogo = newLogo; // Actualizar el último logo clicado
+                toggleRotation(newLogo); // Activar/desactivar rotación
+            });
+        }
+
+        // Función para iniciar o detener la rotación con un solo clic
+        function toggleRotation(element) {
+            if (!element.rotating) {
+                element.rotationTween = gsap.to(element, { rotation: "+=360", repeat: -1, ease: "linear", duration: 2 });
+                element.rotating = true;
+            } else {
+                element.rotationTween.kill();
+                element.rotating = false;
+            }
+        }
+
+        // Evento para copiar y pegar con Ctrl/Cmd + C y Ctrl/Cmd + V
+        document.addEventListener("keydown", (e) => {
+            // Copiar: Ctrl/Cmd + C
+            if ((e.ctrlKey || e.metaKey) && e.key === "c") {
+                // Almacena el último logo clicado como el logo "copiado"
+                if (copiedLogo) {
+                    console.log("Logo copiado:", copiedLogo);
+                }
+            }
+
+            // Pegar: Ctrl/Cmd + V
+            if ((e.ctrlKey || e.metaKey) && e.key === "v") {
+                // Duplicar el último logo "copiado" en una posición desplazada
+                if (copiedLogo) {
+                    duplicateLogo(copiedLogo);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
