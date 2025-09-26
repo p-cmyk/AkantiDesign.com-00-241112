@@ -11,6 +11,151 @@ body {
     font-family: 'Nunito', sans-serif;
     height: 100vh;
     position: relative;
+    transition: background-color 0.3s ease;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .nav-brand a,
+body.dark-mode .nav-menu a {
+    color: #E2E0E0;
+}
+
+body.dark-mode .theme-toggle {
+    color: #E2E0E0;
+}
+
+body.dark-mode .tagline {
+    color: #B4C7E7;
+}
+
+body.dark-mode .page-title {
+    color: #E2E0E0;
+}
+
+body.dark-mode .page-subtitle {
+    color: #B4C7E7;
+}
+
+body.dark-mode .bottom-links a,
+body.dark-mode .bottom-links .center-text {
+    color: #E2E0E0;
+}
+
+body.dark-mode .bottom-links a:hover {
+    color: #B4C7E7;
+}
+
+/* Navegación superior */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+    background-color: transparent;
+}
+
+.nav-brand a {
+    color: #B4C7E7;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.nav-brand a:hover {
+    opacity: 0.8;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: #B4C7E7;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.nav-menu a:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.nav-menu a.active {
+    opacity: 0.8;
+    color: #8DA7D9;
+}
+
+/* Botón de toggle de tema */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.moon-icon {
+    display: block;
+}
+
+/* Estilos para páginas internas */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 80px; /* Espacio para la navegación */
+    padding-bottom: 100px; /* Espacio para los enlaces inferiores */
+}
+
+.page-content {
+    text-align: center;
+}
+
+.page-title {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+    color: #B4C7E7;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.page-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    color: #E2E0E0;
+    font-size: 30px;
+    opacity: 0.6;
 }
 
 /* Contenedor principal */
@@ -43,7 +188,7 @@ body {
 
 .header-text {
     position: absolute; /* Cambia de fixed a absolute */
-    top: 20px; /* Ajusta la distancia desde la parte superior */
+    top: 80px; /* Ajusta la distancia desde la parte superior para no interferir con la nav */
     left: 50%; /* Centrado horizontalmente */
     transform: translateX(-50%); /* Ajuste completo al centro */
     color: #B4C7E7; /* Color de texto */
@@ -138,9 +283,72 @@ body {
         padding: 20px 0; /* Ajusta el padding superior e inferior */
         font-size: 30px; /* Ajusta el tamaño de fuente si es necesario */
     }
+    
+    .nav-menu {
+        gap: 20px; /* Reduce el espacio entre elementos del menú en tablet */
+    }
+    
+    .nav-menu a {
+        font-size: 18px; /* Reduce ligeramente el tamaño de fuente */
+    }
+    
+    .nav-brand a {
+        font-size: 18px; /* Reduce ligeramente el tamaño de fuente */
+    }
+    
+    .theme-toggle {
+        font-size: 18px; /* Reduce el tamaño del toggle en tablet */
+    }
+    
+    .page-title {
+        font-size: 50px; /* Reduce el tamaño del título en tablet */
+    }
+    
+    .page-subtitle {
+        font-size: 25px; /* Reduce el tamaño del subtítulo en tablet */
+    }
 }
 
 @media (max-width: 768px) {
+    /* Navegación móvil */
+    .top-nav {
+        padding: 15px;
+    }
+    
+    .nav-menu {
+        gap: 15px; /* Reduce el espacio entre elementos del menú */
+    }
+    
+    .nav-menu a {
+        font-size: 16px; /* Reduce el tamaño de fuente para móviles */
+    }
+    
+    .nav-brand a {
+        font-size: 16px; /* Reduce el tamaño de fuente para móviles */
+    }
+    
+    .theme-toggle {
+        font-size: 16px; /* Reduce el tamaño del toggle en móviles */
+    }
+    
+    .header-text {
+        top: 70px; /* Ajusta para móviles */
+        font-size: 18px; /* Reduce ligeramente el tamaño */
+    }
+    
+    .page-container {
+        padding-top: 70px; /* Ajusta para móviles */
+        padding-bottom: 80px;
+    }
+    
+    .page-title {
+        font-size: 40px; /* Reduce el tamaño del título en móviles */
+    }
+    
+    .page-subtitle {
+        font-size: 20px; /* Reduce el tamaño del subtítulo en móviles */
+    }
+
     /* Ajustes del cuerpo */
     body {
         display: flex;
