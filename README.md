@@ -2,6 +2,40 @@
 
 Una página "Coming Soon" interactiva y elegante para Akanti Design.
 
+## 🔄 **WORKFLOW DE DESARROLLO - IMPORTANTE**
+
+### **Estructura de ramas:**
+- **`main`** → Solo código estable y probado (SE PUBLICA AUTOMÁTICAMENTE)
+- **`develop`** → Tu rama de trabajo diario (NO se publica)
+
+### **Para trabajar SIN publicar:**
+```bash
+# 1. Asegúrate de estar en develop
+git checkout develop
+
+# 2. Haz tus cambios y commits libremente
+git add .
+git commit -m "✨ Cambios en desarrollo"
+git push origin develop
+```
+
+### **Para PUBLICAR cambios (solo cuando estés seguro):**
+```bash
+# 1. Ve a main
+git checkout main
+
+# 2. Trae los cambios de develop
+git merge develop
+
+# 3. Publica (esto actualiza la web)
+git push origin main
+```
+
+### **⚠️ RECUERDA:**
+- Trabaja siempre en `develop` para cambios experimentales
+- Solo haz merge a `main` cuando todo esté perfecto
+- La web se actualiza automáticamente desde `main`
+
 ## 🎨 Características
 
 - **Logo interactivo**: Arrastra, rota y duplica el logo
